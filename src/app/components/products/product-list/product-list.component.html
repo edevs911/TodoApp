@@ -1,0 +1,28 @@
+
+
+<div class="row" *ngIf="products">
+  <div class="col-md-6" *ngFor="let post of products.listPostings; let i = index">
+    <div class="card mb-3" [routerLink]="['/products/product-detail', i]" routerLinkActive="router-link-active" >
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img [src]="post.pictures[0].url730x532" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p *ngFor="let operation of post.priceOperationTypes">
+              {{operation.prices[0].currency }}  {{operation.prices[0].amount | currency }}
+              <small class="text-muted"> {{operation.operationType.name }}</small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted"> {{post.publication.beginDate | date}} </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
